@@ -1,0 +1,356 @@
+/* =========================================================
+   INTERGRAPHICS - International Graphics Outsourcing S.R.L.
+   Paleta corporativa tomada del colibrí del logo
+   ========================================================= */
+:root {
+    --ig-primario: #00a3b6;       /* turquesa (cuerpo del colibrí) */
+    --ig-primario-osc: #00818e;   /* turquesa oscuro (botones, textos de acento) */
+    --ig-primario-hover: #006a75;
+    --ig-aqua: #66c0bc;           /* aqua (ala) */
+    --ig-verde: #72ba6e;          /* verde (cola) */
+    --ig-lima: #c6d32f;           /* lima (cola) */
+    --ig-durazno: #f8bf82;        /* durazno (pico) */
+    --ig-oscuro: #111418;         /* negro del logotipo */
+    --ig-degradado: linear-gradient(120deg, var(--ig-primario-osc) 0%, var(--ig-primario) 50%, var(--ig-verde) 100%);
+    --ig-franja: linear-gradient(90deg, var(--ig-primario-osc) 0 28%, var(--ig-primario) 28% 52%, var(--ig-aqua) 52% 72%, var(--ig-verde) 72% 88%, var(--ig-lima) 88% 100%);
+    --ig-gris: #f4f5f7;
+    --ig-radio: 14px;
+    --ig-nav-alto: 76px;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--ig-nav-alto); }
+body { font-family: "Poppins", system-ui, sans-serif; color: #3b3f4a; overflow-x: hidden; }
+a { color: var(--ig-primario-osc); text-decoration: none; }
+a:hover { color: var(--ig-primario-hover); }
+.text-ig { color: var(--ig-primario) !important; }
+
+/* ---------- Botones ---------- */
+.btn-ig {
+    background: var(--ig-primario-osc); border: 1px solid var(--ig-primario-osc);
+    color: #fff; font-weight: 500; border-radius: 50px;
+}
+.btn-ig:hover, .btn-ig:focus { background: var(--ig-primario-hover); border-color: var(--ig-primario-hover); color: #fff; }
+.btn-ig:active { background: var(--ig-primario-hover) !important; border-color: var(--ig-primario-hover) !important; color: #fff !important; }
+.text-ig-osc { color: var(--ig-primario-osc) !important; }
+.ig-franja { height: 6px; background: var(--ig-franja); }
+.dropdown-item:active, .dropdown-item.active { background-color: var(--ig-primario-osc); }
+.btn-outline-light, .btn-light { border-radius: 50px; }
+
+/* ---------- Logo ---------- */
+.ig-logo img { height: 44px; width: auto; display: inline-block; }
+@media (max-width: 575.98px) { .ig-logo img { height: 36px; } }
+.ig-logo-texto { font-size: 1.6rem; letter-spacing: -.5px; color: var(--ig-oscuro); font-weight: 700; }
+.ig-logo-texto strong { color: var(--ig-primario-osc); font-weight: 700; }
+.ig-logo-blanco { height: 46px; width: auto; }
+
+/* ---------- Navbar ---------- */
+.ig-navbar {
+    min-height: var(--ig-nav-alto); background: rgba(255,255,255,.97);
+    box-shadow: 0 2px 18px rgba(0,0,0,.06); transition: padding .25s, box-shadow .25s;
+}
+.ig-navbar.reducida { box-shadow: 0 4px 24px rgba(0,0,0,.12); }
+.ig-navbar .nav-link { color: var(--ig-oscuro); font-weight: 500; padding: .5rem .9rem !important; position: relative; }
+.ig-navbar .nav-link:hover, .ig-navbar .nav-link.active { color: var(--ig-primario-osc); }
+@media (min-width: 992px) {
+    .ig-navbar .nav-link::after {
+        content: ""; position: absolute; left: .9rem; right: .9rem; bottom: .2rem; height: 2px;
+        background: var(--ig-primario); transform: scaleX(0); transition: transform .25s;
+    }
+    .ig-navbar .nav-link:hover::after, .ig-navbar .nav-link.active::after { transform: scaleX(1); }
+}
+@media (max-width: 991.98px) {
+    .ig-navbar .navbar-collapse { padding: .75rem 0 1rem; }
+    .ig-navbar .btn-ig { width: 100%; }
+}
+
+/* ---------- Hero ---------- */
+.ig-hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; }
+.ig-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transform: scale(1.04); animation: igZoom 12s ease-out forwards; }
+@keyframes igZoom { to { transform: scale(1); } }
+.ig-hero-overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,22,26,.94) 0%, rgba(0,70,78,.72) 55%, rgba(0,129,142,.25) 100%); }
+.ig-hero-contenido { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding-top: var(--ig-nav-alto); z-index: 2; }
+.ig-pill { display: inline-block; padding: .35rem 1rem; border: 1px solid rgba(255,255,255,.35); border-radius: 50px; color: #fff; font-size: .85rem; }
+.ig-scroll { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 1.6rem; z-index: 3; animation: igRebote 2s infinite; }
+@keyframes igRebote { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,8px); } }
+@media (max-width: 575.98px) {
+    .ig-hero { height: auto; min-height: 100svh; }
+    .ig-hero h1 { font-size: 2.2rem; }
+    .ig-hero .btn-lg { width: 100%; }
+}
+
+/* ---------- Cifras ---------- */
+.ig-cifras { background: var(--ig-oscuro); padding: 2.75rem 0; }
+.ig-cifra { font-size: 2.6rem; font-weight: 700; color: var(--ig-primario); line-height: 1; }
+.ig-cifras .col-6:nth-child(2) .ig-cifra { color: var(--ig-aqua); }
+.ig-cifras .col-6:nth-child(3) .ig-cifra { color: var(--ig-verde); }
+.ig-cifras .col-6:nth-child(4) .ig-cifra { color: var(--ig-lima); }
+.ig-cifra-texto { color: rgba(255,255,255,.75); font-size: .9rem; margin-top: .4rem; }
+
+/* ---------- Secciones ---------- */
+.ig-seccion { padding: 6rem 0; }
+@media (max-width: 767.98px) { .ig-seccion { padding: 4rem 0; } }
+.ig-fondo-claro { background: var(--ig-gris); }
+.ig-subtitulo { display: inline-block; color: var(--ig-primario-osc); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: .8rem; margin-bottom: .5rem; }
+.ig-titulo { font-weight: 700; color: var(--ig-oscuro); margin-bottom: 1.25rem; font-size: clamp(1.7rem, 3vw, 2.4rem); }
+
+/* ---------- Nosotros ---------- */
+.ig-img-marco { position: relative; }
+.ig-img-badge {
+    position: absolute; right: -10px; bottom: -22px; background: #fff; border-radius: var(--ig-radio);
+    box-shadow: 0 10px 30px rgba(0,0,0,.15); padding: 1rem 1.25rem; display: flex; gap: .85rem; align-items: center;
+}
+.ig-img-badge i { font-size: 2rem; color: var(--ig-primario); }
+@media (max-width: 575.98px) { .ig-img-badge { right: 10px; } }
+.ig-valor { display: flex; gap: .85rem; background: var(--ig-gris); border-radius: var(--ig-radio); padding: 1rem; height: 100%; }
+.ig-valor i { font-size: 1.5rem; color: var(--ig-primario); }
+
+/* ---------- Servicios ---------- */
+.ig-servicio { background: #fff; border-radius: var(--ig-radio); overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,.05); transition: transform .3s, box-shadow .3s; }
+.ig-servicio:hover { transform: translateY(-6px); box-shadow: 0 14px 34px rgba(0,0,0,.12); }
+.ig-servicio-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: #ddd; }
+.ig-servicio-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.ig-servicio:hover .ig-servicio-img img { transform: scale(1.07); }
+.ig-servicio-icono {
+    position: absolute; left: 1.25rem; bottom: -22px; width: 48px; height: 48px; border-radius: 50%;
+    background: var(--ig-primario-osc); color: #fff; display: grid; place-items: center; font-size: 1.25rem;
+    box-shadow: 0 6px 16px rgba(0,129,142,.35);
+}
+.ig-servicio .p-4 { padding-top: 2rem !important; }
+
+/* ---------- Proyectos ---------- */
+.ig-filtro { border: 1px solid #d6d8de; border-radius: 50px; padding: .35rem 1rem; color: var(--ig-oscuro); }
+.ig-filtro.active, .ig-filtro:hover { background: var(--ig-oscuro); border-color: var(--ig-oscuro); color: #fff; }
+.ig-proyecto { transition: opacity .3s; }
+.ig-proyecto.oculto { display: none; }
+.ig-caso { position: relative; margin: 0; border-radius: var(--ig-radio); overflow: hidden; aspect-ratio: 4 / 3; background: #ddd; }
+.ig-caso img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.ig-caso figcaption {
+    position: absolute; inset: auto 0 0 0; padding: 1rem;
+    background: linear-gradient(to top, rgba(20,23,31,.9), transparent);
+}
+.ig-caso:hover img { transform: scale(1.08); }
+
+/* ---------- CTA ---------- */
+.ig-cta { padding: 5rem 0; background: var(--ig-degradado); }
+.ig-cta .text-white-50 { color: rgba(255,255,255,.9) !important; }
+.ig-cta .btn-light { color: var(--ig-primario-osc); font-weight: 600; }
+
+/* ---------- Contacto ---------- */
+.ig-oficina { background: var(--ig-gris); border-radius: var(--ig-radio); padding: 1.5rem; }
+.ig-form { background: #fff; border-radius: var(--ig-radio); box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+.form-control:focus, .form-check-input:focus { border-color: var(--ig-primario); box-shadow: 0 0 0 .2rem rgba(0,163,182,.2); }
+.form-check-input:checked { background-color: var(--ig-primario-osc); border-color: var(--ig-primario-osc); }
+
+/* ---------- Footer ---------- */
+.ig-footer { position: relative; background: var(--ig-oscuro); color: rgba(255,255,255,.65); padding: 3.5rem 0 2rem; }
+.ig-footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--ig-franja); }
+.ig-social {
+    display: inline-grid; place-items: center; width: 40px; height: 40px; margin-left: .4rem;
+    border-radius: 50%; background: rgba(255,255,255,.08); color: #fff; transition: background .25s;
+}
+.ig-social:hover { background: var(--ig-primario); color: #fff; }
+
+/* ---------- Login ---------- */
+.ig-login { background: #fff; }
+.ig-login-panel { position: relative; background-size: cover; background-position: center; align-items: flex-end; padding: 3rem; }
+.ig-login-panel { flex-direction: column; justify-content: space-between; align-items: flex-start !important; }
+.ig-login-panel::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,26,.94), rgba(0,90,100,.45)); }
+.ig-login-panel::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: var(--ig-franja); }
+.ig-login-panel-logo { position: relative; }
+.ig-login-panel-texto { position: relative; max-width: 460px; }
+.ig-login-caja { max-width: 400px; }
+.ig-login .input-group-text { background: var(--ig-gris); }
+
+/* ---------- Registro / acceso ---------- */
+.ig-login-caja.ig-caja-ancha { max-width: 560px; }
+.ig-separador { display: flex; align-items: center; gap: .75rem; margin: 1.5rem 0 1rem; color: #9ca3af; font-size: .85rem; }
+.ig-separador::before, .ig-separador::after { content: ""; flex: 1; height: 1px; background: #e5e7eb; }
+.ig-login .alert a { color: inherit; text-decoration: underline; }
+
+/* ---------- Panel ---------- */
+.ig-panel { background: var(--ig-gris); min-height: 100vh; display: flex; flex-direction: column; }
+.ig-panel main { flex: 1; }
+.ig-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--ig-primario-osc); color: #fff; display: grid; place-items: center; font-weight: 600; }
+.ig-bienvenida {
+    display: flex; justify-content: space-between; align-items: center; padding: 2rem;
+    position: relative; overflow: hidden; border-radius: var(--ig-radio); background: linear-gradient(120deg, var(--ig-oscuro), #0b3d44);
+}
+.ig-bienvenida::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--ig-franja); }
+.ig-bienvenida-icono { font-size: 3.5rem; color: var(--ig-primario); }
+.ig-bienvenida-colibri { height: 70px; width: auto; }
+.ig-modulo { display: flex; gap: 1rem; background: #fff; border-radius: var(--ig-radio); padding: 1.25rem; box-shadow: 0 2px 10px rgba(0,0,0,.04); }
+.ig-modulo-icono { flex: none; width: 46px; height: 46px; border-radius: 12px; background: rgba(0,163,182,.12); color: var(--ig-primario-osc); display: grid; place-items: center; font-size: 1.3rem; }
+
+/* ---------- Módulo roles y permisos ---------- */
+.ig-modulo-link { color: inherit; transition: transform .2s, box-shadow .2s; }
+.ig-modulo-link:hover { color: inherit; transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+.breadcrumb a { color: var(--ig-primario-osc); }
+.ig-rol { display: flex; flex-direction: column; background: #fff; border-radius: var(--ig-radio); padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,.04); }
+.ig-badge-base { background: rgba(0,129,142,.12); color: var(--ig-primario-osc); font-weight: 500; }
+.ig-progress { height: 6px; background: #e9eef0; }
+.ig-progress .progress-bar { background: linear-gradient(90deg, var(--ig-primario-osc), var(--ig-primario), var(--ig-verde)); }
+.ig-permiso { padding: .45rem 0 .45rem 1.75rem; border-bottom: 1px dashed #edf0f2; }
+.ig-permiso:last-child { border-bottom: 0; }
+.ig-permiso .form-check-input { margin-left: -1.75rem; width: 1.15em; height: 1.15em; }
+.ig-permiso code { font-size: .72rem; }
+.form-switch .form-check-input:checked { background-color: var(--ig-primario-osc); border-color: var(--ig-primario-osc); }
+@media (min-width: 992px) { .ig-sticky { position: sticky; top: 96px; } }
+@media (min-width: 768px) { .ig-matriz-scroll { max-height: 70vh; } }
+.ig-matriz thead th { position: sticky; top: 0; z-index: 2; background: var(--ig-oscuro); color: #fff; font-weight: 500; white-space: nowrap; padding: .9rem 1rem; }
+.ig-matriz .ig-matriz-fija { position: sticky; left: 0; z-index: 1; background: #fff; min-width: 240px; }
+.ig-matriz thead .ig-matriz-fija { z-index: 3; background: var(--ig-oscuro); }
+.ig-matriz-grupo th { background: rgba(0,163,182,.08) !important; color: var(--ig-primario-osc); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; }
+.ig-check-lg { width: 1.3em; height: 1.3em; cursor: pointer; }
+.ig-check-lg:disabled { opacity: .6; }
+@media (max-width: 575.98px) { .ig-matriz .ig-matriz-fija { min-width: 170px; font-size: .85rem; } }
+
+/* ---------- Módulo usuarios ---------- */
+.ig-indicador { display: flex; align-items: center; gap: .85rem; background: #fff; border-radius: var(--ig-radio); padding: 1rem 1.15rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04); color: var(--ig-oscuro); border: 2px solid transparent; transition: border-color .2s, transform .2s; height: 100%; }
+.ig-indicador:hover { color: var(--ig-oscuro); transform: translateY(-2px); }
+.ig-indicador.activo { border-color: var(--ig-primario); }
+.ig-indicador > i { font-size: 1.4rem; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: rgba(0,163,182,.12); color: var(--ig-primario-osc); flex: none; }
+.ig-ind-verde > i { background: rgba(114,186,110,.18); color: #3f7f3b; }
+.ig-ind-gris > i { background: #eef0f2; color: #6b7280; }
+.ig-ind-ambar > i { background: rgba(248,191,130,.3); color: #9a5b14; }
+.ig-indicador-num { display: block; font-size: 1.5rem; font-weight: 700; line-height: 1.1; }
+.ig-indicador-txt { display: block; font-size: .8rem; color: #6b7280; }
+.ig-alerta-invitados { background: rgba(198,211,47,.18); border: 1px solid rgba(198,211,47,.6); color: #4d5210; }
+.ig-tabla thead th { background: #f8fafb; color: #6b7280; font-weight: 500; font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; border-bottom: 1px solid #edf0f2; padding: .85rem 1rem; }
+.ig-tabla td { padding: .8rem 1rem; border-color: #f1f3f5; }
+.ig-tabla tbody tr:hover { background: #fafcfc; }
+.ig-avatar-0 { background: var(--ig-primario-osc); }
+.ig-avatar-1 { background: var(--ig-oscuro); }
+.ig-avatar-2 { background: var(--ig-primario); }
+.ig-avatar-3 { background: #4f9a4b; }
+.ig-avatar-4 { background: #9aa31f; }
+.ig-avatar { flex: none; font-size: .8rem; }
+.ig-avatar-lg { width: 64px; height: 64px; font-size: 1.4rem; }
+.ig-badge-rol { background: rgba(0,129,142,.12); color: var(--ig-primario-osc); font-weight: 500; }
+.ig-badge-invitado { background: rgba(198,211,47,.3); color: #4d5210; }
+.ig-estado { display: inline-flex; align-items: center; font-size: .82rem; padding: .2rem .6rem; border-radius: 50px; white-space: nowrap; }
+.ig-estado-activo { background: rgba(114,186,110,.18); color: #2f6b2c; }
+.ig-estado-inactivo { background: #eef0f2; color: #5b6170; }
+.ig-estado-pendiente { background: rgba(248,191,130,.3); color: #8a4f0e; }
+.ig-estado-activo-txt { color: #2f6b2c; } .ig-estado-inactivo-txt { color: #5b6170; } .ig-estado-pendiente-txt { color: #8a4f0e; }
+.ig-btn-menu { width: 34px; height: 34px; }
+.ig-paginacion .page-link { color: var(--ig-primario-osc); border-radius: 8px !important; margin: 0 2px; border: 0; }
+.ig-paginacion .page-item.active .page-link { background: var(--ig-primario-osc); color: #fff; }
+.ig-dl dt { font-weight: 500; color: #6b7280; }
+.ig-dl dd { margin-bottom: .75rem; }
+.ig-mini { background: var(--ig-gris); border-radius: 12px; padding: .9rem .5rem; font-size: .8rem; color: #6b7280; }
+.ig-mini span { display: block; font-size: 1.5rem; font-weight: 700; color: var(--ig-primario-osc); }
+.ig-perfil { position: relative; overflow: hidden; }
+.ig-perfil::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 5px; background: var(--ig-franja); }
+.table-responsive { position: relative; }
+@media (max-width: 575.98px) {
+    .ig-tabla td, .ig-tabla th { padding: .65rem .5rem; }
+    .ig-tabla td:first-child { min-width: 0; }
+    .ig-tabla .ig-avatar { width: 30px; height: 30px; font-size: .72rem; }
+}
+
+/* ---------- Módulo vacaciones ---------- */
+.ig-badge-cont { background: var(--ig-lima); color: #2f330a; font-weight: 600; }
+.ig-saldo { background: #fff; border-radius: var(--ig-radio); padding: 1.1rem 1.25rem; box-shadow: 0 2px 10px rgba(0,0,0,.04); height: 100%; }
+.ig-saldo-num { display: block; font-size: 2rem; font-weight: 700; line-height: 1.1; color: var(--ig-oscuro); }
+.ig-saldo-txt { font-size: .82rem; color: #6b7280; }
+.ig-saldo-destacado { background: var(--ig-degradado); }
+.ig-saldo-destacado .ig-saldo-num, .ig-saldo-destacado .ig-saldo-txt { color: #fff; }
+.ig-solicitud { background: #fff; border-radius: var(--ig-radio); padding: 1.1rem 1.25rem; box-shadow: 0 2px 10px rgba(0,0,0,.04); border-left: 5px solid #d6d9dd; }
+.ig-vac-pendiente-borde { border-left-color: var(--ig-durazno); }
+.ig-vac-autorizado-borde { border-left-color: var(--ig-verde); }
+.ig-vac-rechazado-borde { border-left-color: #e05d5d; }
+.ig-vac-cancelado-borde { border-left-color: #c7cbd1; }
+.ig-vac-estado { display: inline-flex; align-items: center; font-size: .8rem; padding: .25rem .7rem; border-radius: 50px; white-space: nowrap; font-weight: 500; height: fit-content; }
+.ig-vac-pendiente { background: rgba(248,191,130,.3); color: #8a4f0e; }
+.ig-vac-autorizado { background: rgba(114,186,110,.2); color: #2f6b2c; }
+.ig-vac-rechazado { background: rgba(224,93,93,.15); color: #a12d2d; }
+.ig-vac-cancelado { background: #eef0f2; color: #5b6170; }
+.ig-resumen-num { font-size: 3.2rem; font-weight: 700; color: var(--ig-primario-osc); line-height: 1; }
+.ig-tabs .nav-link { color: var(--ig-oscuro); border-radius: 50px; padding: .45rem 1.1rem; }
+.ig-tabs .nav-link.active { background: var(--ig-oscuro); color: #fff; }
+.ig-pendiente { background: #fff; border-radius: var(--ig-radio); padding: 1.4rem; box-shadow: 0 2px 10px rgba(0,0,0,.05); border-top: 4px solid var(--ig-durazno); }
+.ig-pendiente-dias { font-size: 2rem; font-weight: 700; color: var(--ig-primario-osc); line-height: 1; }
+.ig-pendiente-periodo { background: rgba(0,163,182,.08); color: var(--ig-primario-osc); border-radius: 10px; padding: .6rem .9rem; font-weight: 500; }
+.ig-chip { display: inline-block; background: rgba(114,186,110,.18); color: #2f6b2c; border-radius: 50px; padding: .15rem .6rem; font-size: .75rem; }
+.ig-chip-pend { background: rgba(248,191,130,.3); color: #8a4f0e; }
+
+/* ---------- Mi perfil ---------- */
+.ig-fuerza { height: 5px; background: #e9eef0; border-radius: 5px; overflow: hidden; }
+.ig-fuerza span { display: block; height: 100%; width: 0; transition: width .25s, background .25s; }
+.ig-saldo-destacado:hover { filter: brightness(1.05); }
+.ig-saldo-enlace { height: auto; }
+
+/* ---------- Reportes ---------- */
+.ig-kpi { display: flex; flex-direction: column; background: #fff; border-radius: var(--ig-radio); padding: 1rem 1.1rem; box-shadow: 0 2px 10px rgba(0,0,0,.04); }
+.ig-kpi > i { font-size: 1.25rem; color: var(--ig-primario-osc); margin-bottom: .35rem; }
+.ig-kpi-num { font-size: 1.7rem; font-weight: 700; color: var(--ig-oscuro); line-height: 1.1; }
+.ig-kpi-txt { font-size: .82rem; font-weight: 500; color: #4b5160; }
+.ig-kpi-sub { font-size: .72rem; color: #8a909b; margin-top: .15rem; }
+.ig-grafico { position: relative; height: 280px; }
+.ig-proximas li { padding: .6rem 0; border-bottom: 1px solid #eef1f3; }
+.ig-proximas li:last-child { border-bottom: 0; }
+.ig-reporte th[data-orden] { cursor: pointer; user-select: none; white-space: nowrap; }
+.ig-reporte th[data-orden]::after { content: "\2195"; opacity: .35; margin-left: .3rem; font-size: .75em; }
+.ig-reporte th[data-dir="asc"]::after { content: "\2191"; opacity: 1; }
+.ig-reporte th[data-dir="desc"]::after { content: "\2193"; opacity: 1; }
+.ig-reporte tfoot td { background: #f8fafb; border-top: 2px solid #e3e7ea; }
+.ig-solo-impresion { display: none; }
+
+@media print {
+    @page { size: A4 landscape; margin: 12mm; }
+    body.ig-panel { background: #fff; }
+    .ig-navbar, .ig-no-imprimir, .alert, footer, .ig-panel > footer { display: none !important; }
+    .ig-solo-impresion { display: flex !important; }
+    .ig-impresion-cabecera { justify-content: space-between; align-items: center; border-bottom: 4px solid var(--ig-primario); padding-bottom: 8px; margin-bottom: 16px; }
+    main.container { max-width: 100% !important; padding: 0 !important; }
+    .card, .ig-kpi { box-shadow: none !important; border: 1px solid #dfe3e6 !important; break-inside: avoid; }
+    .ig-reporte .d-none { display: table-cell !important; }
+    .table-responsive { overflow: visible !important; }
+    .ig-reporte { font-size: 11px; }
+    .ig-grafico { height: 200px; }
+    .ig-grafico canvas { max-width: 100% !important; }
+    .h-100 { height: auto !important; }
+    .ig-kpi-col { flex: 0 0 16.666% !important; max-width: 16.666% !important; }
+    .ig-kpi { padding: .6rem .7rem; }
+    .ig-kpi-num { font-size: 1.3rem; }
+    .ig-fila-grafico { break-inside: avoid; }
+    .ig-fila-grafico > .col-lg-8 { flex: 0 0 64% !important; max-width: 64% !important; }
+    .ig-fila-grafico > .col-lg-4 { flex: 0 0 36% !important; max-width: 36% !important; }
+    .ig-reporte tr { break-inside: avoid; }
+    #debug-icon, #debug-bar { display: none !important; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* ---------- Páginas de error ---------- */
+.ig-error-codigo { font-size: clamp(4.5rem, 14vw, 7rem); font-weight: 700; line-height: 1; letter-spacing: -2px;
+    background: var(--ig-degradado); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: .75rem; }
+
+/* ---------- Cargos ---------- */
+.ig-fila-inactiva td { opacity: .6; }
+.ig-icono-sm { width: 34px; height: 34px; font-size: 1rem; border-radius: 10px; }
+.ig-navbar .dropdown-menu .dropdown-item.active { background: rgba(0,163,182,.12); color: var(--ig-primario-osc); }
+
+/* Menú del panel en una sola línea */
+.ig-panel .ig-navbar .nav-link { white-space: nowrap; }
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .ig-panel .ig-navbar .nav-link { padding: .5rem .55rem !important; }
+    .ig-panel .ig-navbar .dropdown > .btn .text-start { display: none !important; } /* solo el avatar en pantallas medianas */
+}
+
+/* ---------- Feriados ---------- */
+.ig-mes { color: var(--ig-primario-osc); border-bottom: 2px solid #eef1f3; padding-bottom: .4rem; }
+.ig-feriado { display: flex; align-items: center; gap: .75rem; padding: .55rem 0; border-bottom: 1px dashed #edf0f2; }
+.ig-feriado:last-child { border-bottom: 0; }
+.ig-feriado-pasado { opacity: .55; }
+.ig-feriado-dia { flex: none; width: 46px; height: 46px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; color: #fff; }
+.ig-feriado-dia span { font-size: 1.1rem; font-weight: 700; }
+.ig-feriado-dia small { font-size: .62rem; text-transform: uppercase; margin-top: 2px; opacity: .9; }
+.ig-fer-nacional { background: var(--ig-primario-osc); }
+.ig-fer-departamental { background: #4f9a4b; }
+.ig-fer-nolaborable { background: #c47a1f; }
+.ig-fer-nacional-chip { background: rgba(0,129,142,.14); color: var(--ig-primario-osc); }
+.ig-fer-departamental-chip { background: rgba(114,186,110,.2); color: #2f6b2c; }
+.ig-fer-nolaborable-chip { background: rgba(248,191,130,.35); color: #8a4f0e; }
+.min-w-0 { min-width: 0; }

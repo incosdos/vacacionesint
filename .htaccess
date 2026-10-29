@@ -1,0 +1,10 @@
+# Redirige http://localhost/vacacionesint/ hacia la carpeta public/
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /vacacionesint/
+    RewriteRule ^$ public/ [R=302,L]
+</IfModule>
+
+# Bloquea el acceso directo a carpetas sensibles
+RedirectMatch 403 ^/vacacionesint/(app|system|writable|tests|vendor)(/.*)?$
+RedirectMatch 403 ^/vacacionesint/\.env$
